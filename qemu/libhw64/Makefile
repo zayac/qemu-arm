@@ -1,1 +1,1 @@
-/home/zayac/code/qemu/qemu-0.15.0/Makefile.hw
+/home/zayac/code/par/qemu-arm/qemu/Makefile.hw

@@ -1,0 +1,7 @@
+Building QEMU:
+./configure --target-list=arm-softmmu
+make
+
+Executing QEMU:
+qemu-system-arm -kernel zImage.integrator -initrd arm_root.img -nographic
+-append "console=ttyAMA0"
