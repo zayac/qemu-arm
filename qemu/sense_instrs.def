@@ -1,0 +1,41 @@
+/* Sensitive instructions are listed here
+   1 -- sensitive instruction class
+   2 -- value
+   3 -- mask
+   4 -- string representation.  */
+
+
+/* Change Processor state bits in CPSR. In usermode this is ignored.  */
+/* ARM V6 instructions.  */
+SENSE_INSTR (status_register_access, 0xf1080000, 0xfffffe3f, "cpsie")
+SENSE_INSTR (status_register_access, 0xf10a0000, 0xfffffe20, "cpsie")
+SENSE_INSTR (status_register_access, 0xf10C0000, 0xfffffe3f, "cpsid")
+SENSE_INSTR (status_register_access, 0xf10e0000, 0xfffffe20, "cpsid")
+SENSE_INSTR (status_register_access, 0xf1000000, 0xfff1fe20, "cps")
+
+/* Move to ARM Register from Status Register. 
+   Move CPSR or SPSR to a general purpose register.   
+   When in usermode or system mode, there is no SPSR.
+   Therefore the action is unpredicatable.  */
+/* ARM Instructions.  */
+SENSE_INSTR (status_register_access, 0x010f0000, 0x0fbf0fff, "mrs")
+
+/* Move to Status Register from ARM Register. Set CPSR or SPSR from a general
+   purpose register. Usermode cannot set most of the CPSR. Any writes to the
+   privileged bits in the CPSR while in user- mode are ignored an exception is
+   not thrown.	When in usermode or system mode, there is no SPSR therefore the
+   action is unpredictable.  */
+/* ARM Instructions.  */
+SENSE_INSTR (status_register_access, 0x0120f000, 0x0db0f000, "msr")
+
+/* Return from exception. Loads PC and CSPR from memory.  
+   Unpredictable in Usermode.  */
+/* ARM V6 Instructions.  */
+SENSE_INSTR (status_register_access, 0xf8100a00, 0xfe50ffff, "rfe")
+
+/* Store Return Status. Stores R14 and SPSR to storage.   
+   Unpredictable in usermode and system mode due to no SPSR.  */
+/* ARM V6 INSTRUCTIONS.  */
+SENSE_INSTR (status_register_access, 0xf84d0500, 0xfe5fffe0, "srs")
+
+
