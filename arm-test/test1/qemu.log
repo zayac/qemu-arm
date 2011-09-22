@@ -1,0 +1,35 @@
+----------------
+IN: 
+0x00000000:  e3a00005      mov	r0, #5	; 0x5
+0x00000004:  e3a01004      mov	r1, #4	; 0x4
+0x00000008:  e0812000      add	r2, r1, r0
+0x0000000c:  e10f3000      mrs	r3, CPSR   Status Register Access
+0x00000010:  eafffffe      b	0x10
+
+OUT: [size=58]
+0xb4aff000:  mov    $0x4,%ebx
+0xb4aff005:  add    $0x5,%ebx
+0xb4aff008:  mov    $0x5,%esi
+0xb4aff00d:  mov    %esi,0x0(%ebp)
+0xb4aff010:  mov    $0x4,%esi
+0xb4aff015:  mov    %esi,0x4(%ebp)
+0xb4aff018:  mov    %ebx,0x8(%ebp)
+0xb4aff01b:  call   0x81cae9c
+0xb4aff020:  mov    %eax,0xc(%ebp)
+0xb4aff023:  jmp    0xb4aff028
+0xb4aff028:  mov    $0x10,%ebx
+0xb4aff02d:  mov    %ebx,0x3c(%ebp)
+0xb4aff030:  mov    $0xb39fe008,%eax
+0xb4aff035:  jmp    0x8a1aaee
+
+----------------
+IN: 
+0x00000010:  eafffffe      b	0x10
+
+OUT: [size=23]
+0xb4aff040:  jmp    0xb4aff045
+0xb4aff045:  mov    $0x10,%ebx
+0xb4aff04a:  mov    %ebx,0x3c(%ebp)
+0xb4aff04d:  mov    $0xb39fe04c,%eax
+0xb4aff052:  jmp    0x8a1aaee
+
