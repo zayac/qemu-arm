@@ -1,0 +1,5 @@
+/* Sensitive instructions are listed here
+   1 -- sensitive instruction class
+   2 -- it`s string representation */
+
+SENSE_TYPE (status_register_access, "Status Register Access")
