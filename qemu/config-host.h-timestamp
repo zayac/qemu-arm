@@ -8,6 +8,9 @@
 #define CONFIG_QEMU_DOCDIR "/usr/local/share/doc/qemu"
 #define CONFIG_QEMU_CONFDIR "/usr/local/etc/qemu"
 #define HOST_I386 1
+#define CONFIG_DEBUG_TCG 1
+#define CONFIG_DEBUG_MONITOR 1
+#define CONFIG_DEBUG_EXEC 1
 #define HOST_LONG_BITS 32
 #define CONFIG_POSIX 1
 #define CONFIG_LINUX 1

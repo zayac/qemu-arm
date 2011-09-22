@@ -21,7 +21,7 @@
 
 /* Start of qemu specific additions.  Mostly this is stub definitions
    for things we don't care about.  */
-
+#include "sense_instrs.c"
 #include "dis-asm.h"
 #define ATTRIBUTE_UNUSED __attribute__((unused))
 #define ISSPACE(x) ((x) == ' ' || (x) == '\t' || (x) == '\n')
@@ -2700,7 +2700,6 @@ print_insn_arm_internal (bfd_vma pc, struct disassemble_info *info, long given)
 	      || (insn->mask == 0 && insn->value == 0)))
 	{
 	  const char *c;
-
 	  for (c = insn->assembler; *c; c++)
 	    {
 	      if (*c == '%')
@@ -3023,6 +3022,9 @@ print_insn_arm_internal (bfd_vma pc, struct disassemble_info *info, long given)
 	      else
 		func (stream, "%c", *c);
 	    }
+	    unsigned find = find_in_sensitive (given);
+	    if (find != sensitive_instr_size)
+	      func (stream, "   %s", SENSE_TYPE_NAME(SENSE_INSTR_CLASS(find)));
 	  return;
 	}
     }

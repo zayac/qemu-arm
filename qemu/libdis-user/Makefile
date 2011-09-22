@@ -1,1 +1,1 @@
-/home/zayac/code/par/qemu-arm/qemu/Makefile.dis
+/home/zayac/code/qemu-arm/qemu/Makefile.dis
